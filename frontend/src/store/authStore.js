@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api/auth";
+const API_URL = import.meta.env.MODE === "development" ? "http://localhost:8000/api/auth" : "/api/auth";  // this "/api/auth" will run if the import.meta.env.MODE is not equal to dev or it's in production mode. "/api/auth" this endpoint is basically run regardless of the url in the production mode
 
 axios.defaults.withCredentials = true; //configuration. In every single request axios will put the cookies into the request header
 
